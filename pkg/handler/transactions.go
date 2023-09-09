@@ -31,4 +31,23 @@ func (h *Handler) depositMoney(c *gin.Context) {
 
 }
 
-func (h *Handler) withdrawMoney(c *gin.Context) {}
+func (h *Handler) withdrawMoney(c *gin.Context) {
+	id, err := h.getId(c)
+	if err != nil {
+		return
+	}
+
+	var input transactionInput
+	if err := c.BindJSON(&input); err != nil {
+		newErrorResponse(c, http.StatusBadRequest, "invalid input")
+		return
+	}
+	balance, err := h.services.Transaction.WithdrawMoney(id, input.Value)
+	if err != nil {
+		newErrorResponse(c, http.StatusInternalServerError, err.Error())
+		return
+	}
+	c.JSON(http.StatusOK, map[string]interface{}{
+		"balance": balance,
+	})
+}
