@@ -1,21 +1,3 @@
-<<<<<<< HEAD
-package repository
-
-type Authorization interface {
-}
-
-type Transaction interface {
-}
-
-type Repository struct {
-	Authorization
-	Transaction
-}
-
-func NewRepository() *Repository {
-	return &Repository{}
-}
-=======
 package repository
 
 import (
@@ -41,4 +23,3 @@ func NewRepository(db *sqlx.DB) *Repository {
 		Authorization: NewAuthPostgres(db),
 	}
 }
->>>>>>> f48611f (first commit)

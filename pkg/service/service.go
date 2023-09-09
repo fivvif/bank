@@ -1,23 +1,3 @@
-<<<<<<< HEAD
-package service
-
-import "bank/pkg/repository"
-
-type Authorization interface {
-}
-type Transaction interface {
-}
-
-type Service struct {
-	Authorization
-	Transaction
-}
-
-func NewService(repository *repository.Repository) *Service {
-	return &Service{}
-
-}
-=======
 package service
 
 import (
@@ -44,4 +24,3 @@ func NewService(repository *repository.Repository) *Service {
 	}
 
 }
->>>>>>> f48611f (first commit)

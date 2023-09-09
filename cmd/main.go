@@ -1,34 +1,3 @@
-<<<<<<< HEAD
-package main
-
-import (
-	"bank"
-	"bank/pkg/handler"
-	"bank/pkg/repository"
-	"bank/pkg/service"
-	"github.com/spf13/viper"
-	"log"
-)
-
-func main() {
-	if err := initConfig(); err != nil {
-		log.Fatalf("error while initialization config : %s", err.Error())
-	}
-	repos := repository.NewRepository()
-	services := service.NewService(repos)
-	handlers := handler.NewHandler(services)
-	srv := new(bank.Server)
-	if err := srv.Run(viper.GetString("8080"), handlers.InitRoutes()); err != nil {
-		log.Fatalf("error while running server")
-	}
-}
-
-func initConfig() error {
-	viper.AddConfigPath("configs")
-	viper.SetConfigName("config")
-	return viper.ReadInConfig()
-}
-=======
 package main
 
 import (
@@ -77,4 +46,3 @@ func initConfig() error {
 	viper.SetConfigName("config")
 	return viper.ReadInConfig()
 }
->>>>>>> f48611f (first commit)

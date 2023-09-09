@@ -12,3 +12,5 @@ func (h *Handler) giveMoney(c *gin.Context) {
 	})
 
 }
+
+func (h *Handler) takeMoney(c *gin.Context) {}
