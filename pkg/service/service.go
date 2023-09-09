@@ -27,10 +27,3 @@ func NewService(repository *repository.Repository) *Service {
 	}
 
 }
-
-func NewCal(repository *repository.Repository) *Service {
-	return &Service{
-		Authorization: NewAuthService(repository.Authorization),
-		Transaction:   NewTransService(repository.Transaction),
-	}
-}
