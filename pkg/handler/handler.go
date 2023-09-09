@@ -27,8 +27,8 @@ func (h *Handler) InitRoutes() *gin.Engine {
 	{
 		transactions := api.Group("/transactions")
 		{
-			transactions.GET("/give", h.giveMoney)
-			transactions.POST("/", h.takeMoney)
+			transactions.PUT("/deposit", h.depositMoney)
+			transactions.PUT("/withdraw", h.withdrawMoney)
 		}
 	}
 

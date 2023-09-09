@@ -9,6 +9,7 @@ import (
 //from table
 const (
 	customersTable = "customers"
+	storage        = "storage"
 )
 
 type Config struct {

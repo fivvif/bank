@@ -11,6 +11,8 @@ type Authorization interface {
 	ParseToken(token string) (int, error)
 }
 type Transaction interface {
+	DepositMoney(id, value int) (int, error)
+	WithdrawMoney(id, value int) (int, error)
 }
 
 type Service struct {
@@ -21,6 +23,7 @@ type Service struct {
 func NewService(repository *repository.Repository) *Service {
 	return &Service{
 		Authorization: NewAuthService(repository.Authorization),
+		Transaction:   NewTransService(repository.Transaction),
 	}
 
 }

@@ -1,6 +1,7 @@
 package handler
 
 import (
+	"errors"
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"strings"
@@ -26,10 +27,24 @@ func (h *Handler) userIdentity(c *gin.Context) {
 
 	customerId, err := h.services.ParseToken(headerParts[1])
 	if err != nil {
-		newErrorResponse(c, http.StatusUnauthorized, err.Error())
+		newErrorResponse(c, http.StatusUnauthorized, "invalid token")
 		return
 	}
 
 	c.Set(customerCtx, customerId)
 
+}
+
+func (h *Handler) getId(c *gin.Context) (int, error) {
+	id, ok := c.Get(customerCtx)
+	if !ok {
+		newErrorResponse(c, http.StatusInternalServerError, "customer id not found")
+		return 0, errors.New("customer id not found")
+	}
+	idInt, ok := id.(int)
+	if !ok {
+		newErrorResponse(c, http.StatusInternalServerError, "customer id not found")
+		return 0, errors.New("customer id not found")
+	}
+	return idInt, nil
 }

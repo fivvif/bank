@@ -6,6 +6,6 @@ type Customer struct {
 	Surname  string `json:"surname" binding:"required"`
 	Age      int    `json:"age" binding:"required"`
 	Phone    string `json:"phone" binding:"required"`
-	Balance  int    `json:"-"`
+	Balance  int
 	Password string `json:"password" binding:"required"`
 }

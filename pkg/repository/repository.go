@@ -11,6 +11,8 @@ type Authorization interface {
 }
 
 type Transaction interface {
+	DepositMoney(id, value int) (int, error)
+	WithdrawMoney(id, value int) (int, error)
 }
 
 type Repository struct {
@@ -21,5 +23,6 @@ type Repository struct {
 func NewRepository(db *sqlx.DB) *Repository {
 	return &Repository{
 		Authorization: NewAuthPostgres(db),
+		Transaction:   NewTransPostgres(db),
 	}
 }
