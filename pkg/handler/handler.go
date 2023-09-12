@@ -30,6 +30,10 @@ func (h *Handler) InitRoutes() *gin.Engine {
 			transactions.PUT("/deposit", h.depositMoney)
 			transactions.PUT("/withdraw", h.withdrawMoney)
 		}
+		credits := api.Group("/credits")
+		{
+			credits.POST("/take", h.takeCredit)
+		}
 	}
 
 	return router
