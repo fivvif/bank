@@ -14,10 +14,14 @@ type Transaction interface {
 	DepositMoney(id, value int) (int, error)
 	WithdrawMoney(id, value int) (int, error)
 }
+type Credit interface {
+	TakeCredit(credit bank.Credit) (int, error)
+}
 
 type Service struct {
 	Authorization
 	Transaction
+	Credit
 }
 
 func NewService(repository *repository.Repository) *Service {

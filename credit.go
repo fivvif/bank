@@ -8,6 +8,7 @@ type Credit struct {
 	Value      int
 	Percentage int
 	LoanPeriod time.Time
+	ReqPayment time.Time
 }
 
 // ОБЯЗАТЕЛЬНЫЕ ПЛАТЕЖИ

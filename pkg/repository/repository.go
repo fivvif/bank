@@ -15,9 +15,14 @@ type Transaction interface {
 	WithdrawMoney(id, value int) (int, error)
 }
 
+type Credit interface {
+	TakeCredit(credit bank.Credit) (int, error)
+}
+
 type Repository struct {
 	Authorization
 	Transaction
+	Credit
 }
 
 func NewRepository(db *sqlx.DB) *Repository {
