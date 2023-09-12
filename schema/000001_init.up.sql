@@ -9,3 +9,7 @@ CREATE TABLE customers
     phone varchar(255) not null,
     password_hash varchar(255) not null
 );
+
+CREATE TABLE storage(
+    storage int
+)
