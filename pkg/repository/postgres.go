@@ -10,6 +10,7 @@ import (
 const (
 	customersTable = "customers"
 	storage        = "storage"
+	creditTable    = "credits"
 )
 
 type Config struct {

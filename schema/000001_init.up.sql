@@ -12,4 +12,15 @@ CREATE TABLE customers
 
 CREATE TABLE storage(
     storage int
-)
+);
+INSERT INTO storage (storage) VALUES (0);
+
+CREATE TABLE credits
+(
+    id serial not null unique,
+    customer_id int not null,
+    value int not null,
+    percentage int not null,
+    loan_period int not null,
+    current_debt int not null
+);

@@ -24,7 +24,6 @@ func (s *TransPostgres) DepositMoney(id, value int) (int, error) {
 	if err := row.Scan(&balance); err != nil {
 		tx.Rollback()
 		return 0, err
-
 	}
 	updateBankBalanceQuery := fmt.Sprintf("UPDATE %s SET storage = storage + $1", storage)
 	_, err = tx.Exec(updateBankBalanceQuery, value)
@@ -46,7 +45,6 @@ func (s *TransPostgres) WithdrawMoney(id, value int) (int, error) {
 	if err := row.Scan(&balance); err != nil {
 		tx.Rollback()
 		return 0, err
-
 	}
 	updateBankBalanceQuery := fmt.Sprintf("UPDATE %s SET storage = storage - $1", storage)
 	_, err = tx.Exec(updateBankBalanceQuery, value)

@@ -16,7 +16,8 @@ type Transaction interface {
 }
 
 type Credit interface {
-	TakeCredit(credit bank.Credit) (int, error)
+	TakeCredit(credit bank.Credit) (int, int, error)
+	CloseCredit(creditId, id, value int) (int, error)
 }
 
 type Repository struct {
@@ -29,5 +30,6 @@ func NewRepository(db *sqlx.DB) *Repository {
 	return &Repository{
 		Authorization: NewAuthPostgres(db),
 		Transaction:   NewTransPostgres(db),
+		Credit:        NewCreditPostgres(db),
 	}
 }
